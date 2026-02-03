@@ -1,38 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Rafeeq | Technical | Document</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Draw Delivery System - Three Delivery Methods</title>
+    <style>
+        /* Previous styles remain, adding new delivery method indicators */
+        .delivery-method-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+        
+        .method-online { background: #3498db; color: white; }
+        .method-shipment { background: #9b59b6; color: white; }
+        .method-handtohand { background: #2ecc71; color: white; }
+        
+        .qr-scan-section {
+            border: 2px solid #2ecc71;
+            background: #e8f6ef;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .qr-code-display {
+            width: 200px;
+            height: 200px;
+            margin: 15px auto;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .scan-button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+        }
+        
+        .scan-button:before {
+            content: "📷";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .proof-upload-section {
+            border: 2px dashed #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            background: #e8f4fc;
+            margin: 15px 0;
+        }
+        
+        .delivery-method-selector {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .method-tab {
+            padding: 10px 20px;
+            background: #ecf0f1;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .method-tab.active {
+            border-color: #3498db;
+            background: white;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Post-Draw Prize Delivery System - Three Delivery Methods</h1>
+        
+        <p>This updated mockup demonstrates the three delivery methods: <strong>Online</strong>, <strong>Shipment</strong>, and <strong>Hand-to-Hand</strong> with QR code scanning.</p>
+        
+        <div class="role-selector">
+            <div class="role-btn active" data-role="corporate">
+                <span class="role-icon">🏢</span> Corporate User
+            </div>
+            <div class="role-btn" data-role="winner">
+                <span class="role-icon">🎁</span> Winner
+            </div>
+        </div>
+        
+        <!-- CORPORATE USER MOCKUP - UPDATED FOR THREE METHODS -->
+        <div id="corporate-mockup" class="mockup-section active">
+            <div class="mockup-header">
+                <h2>Corporate User Interface - Multi-Method Delivery</h2>
+                <div>Role: Prize Delivery with Online, Shipment, or Hand-to-Hand Methods</div>
+            </div>
+            
+            <div class="mockup-content">
+                <!-- DELIVERY METHOD SELECTION SCREEN -->
+                <div class="screen-preview">
+                    <div class="screen-title">Select Delivery Method</div>
+                    <div class="screen-content">
+                        <h3>Winner: Ahmed Hassan | Prize: iPhone 15 Pro</h3>
+                        
+                        <div class="delivery-method-selector">
+                            <div class="method-tab active" data-method="online">Online Delivery</div>
+                            <div class="method-tab" data-method="shipment">Shipment</div>
+                            <div class="method-tab" data-method="handtohand">Hand-to-Hand</div>
+                        </div>
+                        
+                        <!-- ONLINE DELIVERY METHOD -->
+                        <div id="online-method" class="method-content" style="display: block;">
+                            <h3><span class="delivery-method-indicator method-online">Online Delivery</span></h3>
+                            <p>For digital prizes: vouchers, bank transfers, etc.</p>
+                            
+                            <div class="proof-upload-section">
+                                <h4>Upload Proof of Digital Transfer</h4>
+                                <p>Required: Screenshot, transaction receipt, or confirmation</p>
+                                <button class="button">📎 Upload Digital Proof</button>
+                                <div style="margin-top: 15px;">
+                                    <p><strong>Uploaded:</strong> transaction_receipt_ahmed.pdf</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin: 20px 0;">
+                                <button class="button">Trigger OTP to Winner</button>
+                                <p style="font-size: 0.9rem; color: #7f8c8d;">OTP will be sent to winner for confirmation</p>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                                <h4>Online Delivery Process:</h4>
+                                <ol style="padding-left: 20px; margin-top: 10px;">
+                                    <li>Send prize directly to winner (outside platform)</li>
+                                    <li>Upload proof of transaction</li>
+                                    <li>Trigger OTP confirmation</li>
+                                    <li>Winner enters OTP to confirm receipt</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <!-- SHIPMENT DELIVERY METHOD -->
+                        <div id="shipment-method" class="method-content" style="display: none;">
+                            <h3><span class="delivery-method-indicator method-shipment">Shipment Delivery</span></h3>
+                            <p>For physical prizes requiring shipping</p>
+                            
+                            <div class="proof-upload-section">
+                                <h4>Upload Bill of Lading / Shipping Receipt</h4>
+                                <p>Required: Shipping documentation with tracking</p>
+                                <button class="button">📦 Upload Shipping Document</button>
+                                <div style="margin-top: 15px;">
+                                    <p><strong>Uploaded:</strong> dhl_shipment_ahmed.pdf</p>
+                                    <p><strong>Tracking:</strong> 1234567890</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin: 20px 0;">
+                                <button class="button">Trigger OTP to Winner</button>
+                                <p style="font-size: 0.9rem; color: #7f8c8d;">OTP will be sent to winner upon delivery</p>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                                <h4>Shipment Delivery Process:</h4>
+                                <ol style="padding-left: 20px; margin-top: 10px;">
+                                    <li>Arrange shipping with carrier</li>
+                                    <li>Upload bill of lading/shipping receipt</li>
+                                    <li>Trigger OTP confirmation</li>
+                                    <li>Winner enters OTP upon receipt</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <!-- HAND-TO-HAND DELIVERY METHOD -->
+                        <div id="handtohand-method" class="method-content" style="display: none;">
+                            <h3><span class="delivery-method-indicator method-handtohand">Hand-to-Hand Delivery</span></h3>
+                            <p>For in-person prize handover with QR verification</p>
+                            
+                            <div class="qr-scan-section">
+                                <h4>QR Code Verification</h4>
+                                <p>Scan winner's QR code using device camera</p>
+                                
+                                <div class="qr-code-display">
+                                    [QR CODE PREVIEW]
+                                </div>
+                                
+                                <button class="scan-button">Scan Winner's QR Code</button>
+                                
+                                <div style="margin-top: 15px; background: white; padding: 15px; border-radius: 6px;">
+                                    <h4>Scan Result:</h4>
+                                    <p><strong>Winner:</strong> Ahmed Hassan ✓</p>
+                                    <p><strong>Prize:</strong> iPhone 15 Pro ✓</p>
+                                    <p><strong>Status:</strong> Ready for handover</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin: 20px 0;">
+                                <h4>OTP Verification</h4>
+                                <p>Ask winner for OTP and enter below:</p>
+                                <input type="text" class="otp-input" placeholder="Enter winner's OTP" style="width: 100%; max-width: 300px;">
+                                <button class="button success">Verify & Complete Handover</button>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                                <h4>Hand-to-Hand Process:</h4>
+                                <ol style="padding-left: 20px; margin-top: 10px;">
+                                    <li>System generates QR code for winner</li>
+                                    <li>Meet winner in person</li>
+                                    <li>Scan winner's QR code with corporate app</li>
+                                    <li>Enter winner's OTP when prompted</li>
+                                    <li>System validates and auto-confirms delivery</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DELIVERY DASHBOARD WITH METHOD FILTERS -->
+                <div class="screen-preview">
+                    <div class="screen-title">Delivery Dashboard - Multi-Method View</div>
+                    <div class="screen-content">
+                        <h3>Campaign: Summer Giveaway 2024</h3>
+                        <p>Total Winners: 50 | Delivery Methods Distribution:</p>
+                        
+                        <div style="display: flex; gap: 10px; margin: 15px 0;">
+                            <div style="flex: 1; text-align: center; padding: 10px; background: #e8f4fc; border-radius: 6px;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #3498db;">15</div>
+                                <div>Online</div>
+                            </div>
+                            <div style="flex: 1; text-align: center; padding: 10px; background: #f4e8fc; border-radius: 6px;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #9b59b6;">25</div>
+                                <div>Shipment</div>
+                            </div>
+                            <div style="flex: 1; text-align: center; padding: 10px; background: #e8f6ef; border-radius: 6px;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #2ecc71;">10</div>
+                                <div>Hand-to-Hand</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Delivery Status by Method</h3>
+                        <table class="data-table">
+                            <tr>
+                                <th>Method</th>
+                                <th>Pending</th>
+                                <th>In Progress</th>
+                                <th>Confirmed</th>
+                                <th>Failed</th>
+                            </tr>
+                            <tr>
+                                <td><span class="delivery-method-indicator method-online">Online</span></td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>8</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td><span class="delivery-method-indicator method-shipment">Shipment</span></td>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>8</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td><span class="delivery-method-indicator method-handtohand">Hand-to-Hand</span></td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                        
+                        <h3>Quick Actions</h3>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="button">📤 Process Online Deliveries</button>
+                            <button class="button">📦 Process Shipments</button>
+                            <button class="button">🤝 Schedule Hand-to-Hand</button>
+                            <button class="button secondary">📊 Method Analytics</button>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px;">
+                            <h4>Method-Specific Requirements:</h4>
+                            <p><strong>Online:</strong> Digital proof required before OTP trigger</p>
+                            <p><strong>Shipment:</strong> Bill of lading required before OTP trigger</p>
+                            <p><strong>Hand-to-Hand:</strong> QR scan + OTP verification during meeting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h3>Corporate Responsibilities by Delivery Method</h3>
+                <div class="role-permissions">
+                    <div class="permission-item">
+                        <strong>📤 Online Delivery:</strong> Send digital prize, upload transaction proof, trigger OTP
+                    </div>
+                    <div class="permission-item">
+                        <strong>📦 Shipment Delivery:</strong> Arrange shipping, upload bill of lading, trigger OTP
+                    </div>
+                    <div class="permission-item">
+                        <strong>🤝 Hand-to-Hand Delivery:</strong> Schedule meeting, scan QR code, enter winner's OTP
+                    </div>
+                    <div class="permission-item">
+                        <strong>📱 Corporate App:</strong> Camera access for QR scanning, real-time validation
+                    </div>
+                </div>
+                <p><strong>System Features:</strong> QR generation for Hand-to-Hand only, automatic status updates, method-specific validation rules.</p>
+            </div>
+        </div>
+        
+        <!-- WINNER MOCKUP - UPDATED FOR THREE METHODS -->
+        <div id="winner-mockup" class="mockup-section">
+            <div class="mockup-header">
+                <h2>Winner Interface - Multi-Method Experience</h2>
+                <div>Role: Receiving Prize via Online, Shipment, or Hand-to-Hand Method</div>
+            </div>
+            
+            <div class="mockup-content">
+                <!-- WINNER PRIZE CARD SCREEN -->
+                <div class="screen-preview">
+                    <div class="screen-title">Your Prize Card</div>
+                    <div class="screen-content" style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">🎁</div>
+                        <h2>Congratulations!</h2>
+                        <p>You've won in <strong>Summer Giveaway 2024</strong></p>
+                        
+                        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 6px;">
+                            <p><strong>Prize:</strong> iPhone 15 Pro</p>
+                            <p><strong>Delivery Method:</strong> <span class="delivery-method-indicator method-handtohand">Hand-to-Hand</span></p>
+                            <p><strong>Instructions:</strong> Bring this QR code to your meeting</p>
+                        </div>
+                        
+                        <!-- QR CODE FOR HAND-TO-HAND -->
+                        <div class="qr-scan-section" style="max-width: 300px; margin: 20px auto;">
+                            <h4>Your QR Code for Handover</h4>
+                            <div class="qr-code-display" style="width: 150px; height: 150px;">
+                                [WINNER QR CODE]
+                            </div>
+                            <p style="font-size: 0.9rem;">Show this to the corporate representative</p>
+                            <button class="button secondary" style="margin-top: 10px;">📱 Save to Phone</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px; text-align: left;">
+                            <h4>What to Expect:</h4>
+                            <p>1. Corporate will scan this QR code during your meeting</p>
+                            <p>2. You will receive an OTP on your phone</p>
+                            <p>3. Provide the OTP to the corporate representative</p>
+                            <p>4. Receive your prize once verified</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- WINNER OTP CONFIRMATION SCREEN -->
+                <div class="screen-preview">
+                    <div class="screen-title">OTP Confirmation</div>
+                    <div class="screen-content">
+                        <h3>Confirm Your Prize Receipt</h3>
+                        
+                        <!-- METHOD-SPECIFIC INSTRUCTIONS -->
+                        <div style="margin: 15px 0; padding: 15px; background: #e8f4fc; border-radius: 6px;">
+                            <h4>Your Delivery Method: <span class="delivery-method-indicator method-online">Online Delivery</span></h4>
+                            <p>You should have received your digital prize directly from the company.</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin: 30px 0;">
+                            <p>Enter the 6-digit OTP sent to your mobile number to confirm receipt:</p>
+                            <input type="text" class="otp-input" maxlength="6" placeholder="______">
+                            <button class="button success" style="margin-top: 20px; padding: 12px 30px;">Confirm Receipt</button>
+                        </div>
+                        
+                        <!-- ALTERNATIVE METHOD FLOWS -->
+                        <div style="margin-top: 30px;">
+                            <h4>Other Delivery Methods:</h4>
+                            
+                            <div style="display: flex; gap: 15px; margin-top: 15px;">
+                                <div style="flex: 1; padding: 15px; background: #f9f9f9; border-radius: 6px;">
+                                    <h5><span class="delivery-method-indicator method-shipment">Shipment</span></h5>
+                                    <p>Wait for delivery, then enter OTP when prompted</p>
+                                </div>
+                                <div style="flex: 1; padding: 15px; background: #f9f9f9; border-radius: 6px;">
+                                    <h5><span class="delivery-method-indicator method-handtohand">Hand-to-Hand</span></h5>
+                                    <p>Provide OTP to corporate during in-person meeting</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 6px;">
+                            <h4>Need Help?</h4>
+                            <p><strong>Online/Shipment Issue:</strong> Contact corporate directly</p>
+                            <p><strong>Hand-to-Hand Issue:</strong> Ensure QR code is visible for scanning</p>
+                            <p><strong>OTP Not Received:</strong> Request resend from corporate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h3>Winner Experience by Delivery Method</h3>
+                <div class="role-permissions">
+                    <div class="permission-item">
+                        <strong>📤 Online Delivery:</strong> Receive prize directly, enter OTP to confirm
+                    </div>
+                    <div class="permission-item">
+                        <strong>📦 Shipment Delivery:</strong> Wait for delivery, enter OTP upon receipt
+                    </div>
+                    <div class="permission-item">
+                        <strong>🤝 Hand-to-Hand Delivery:</strong> Present QR code, provide OTP to corporate
+                    </div>
+                    <div class="permission-item">
+                        <strong>🔒 Privacy Protection:</strong> No account needed, minimal data exposure
+                    </div>
+                </div>
+                <p><strong>Note:</strong> Prize Cards with QR codes are generated only for Hand-to-Hand delivery method.</p>
+            </div>
+        </div>
+    </div>
 
-<div class="container-fluid p-5 bg-primary text-white text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
-  
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-  </div>
-</div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Role switching functionality
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const mockupSections = document.querySelectorAll('.mockup-section');
+            
+            roleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    roleButtons.forEach(btn => btn.classList.remove('active'));
+                    mockupSections.forEach(section => section.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    const role = this.getAttribute('data-role');
+                    const targetSection = document.getElementById(`${role}-mockup`);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+            
+            // Delivery method tab switching
+            const methodTabs = document.querySelectorAll('.method-tab');
+            const methodContents = document.querySelectorAll('.method-content');
+            
+            methodTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    methodTabs.forEach(t => t.classList.remove('active'));
+                    methodContents.forEach(c => c.style.display = 'none');
+                    
+                    this.classList.add('active');
+                    const method = this.getAttribute('data-method');
+                    const targetContent = document.getElementById(`${method}-method`);
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                    }
+                });
+            });
+            
+            // OTP input simulation
+            const otpInputs = document.querySelectorAll('.otp-input');
+            otpInputs.forEach(input => {
+                input.addEventListener('input', function(e) {
+                    this.value = this.value.replace(/[^0-9]/g, '').substring(0, 6);
+                });
+            });
+            
+            // QR scan simulation
+            const scanButtons = document.querySelectorAll('.scan-button');
+            scanButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Camera activated for QR scanning. (Simulated: QR would be validated against delivery record.)');
+                    // In real implementation, this would activate device camera
+                });
+            });
+        });
+    </script>
 </body>
 </html>
