@@ -197,18 +197,6 @@ Purpose: Compliance trail.
 + PostDrawCompletedAt
 ```
 
-### Winners
-
-```sql
-+ DeliveryId (FK)
-```
-
-### Users
-
-```sql
-+ DeviceFingerprint
-```
-
 ⏱️ Effort: **0.5 Day**
 
 ---
