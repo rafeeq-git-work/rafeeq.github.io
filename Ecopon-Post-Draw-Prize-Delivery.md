@@ -100,7 +100,8 @@ Step 8 → Status updates to "Confirmed by Winner" automatically
 | **Winner** | Enter OTP to confirm | Enter OTP to confirm | Provide QR code, provide OTP to corporate |
 | **System** | Generate OTP, validate confirmation | Generate OTP, validate confirmation | Generate QR, validate scan+OTP match |
 | **Admin** | View all proofs & confirmations | View all proofs & confirmations | View QR scan records & confirmations |
-| **Chamber** | Oversight of digital deliveries | Oversight of physical deliveries | Oversight of in-person deliveries |
+| **Chamber** | Oversight of digital deliveries (Assigned Competitions) | Oversight of physical deliveries | Oversight of in-person deliveries |
+| **Ministry** | Oversight of digital deliveries (All) | Oversight of physical deliveries | Oversight of in-person deliveries |
 
 ### **Corporate App Capabilities:**
 - **Camera Access**: For QR code scanning in Hand-to-Hand delivery
