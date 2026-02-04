@@ -176,13 +176,10 @@ Purpose: Hand-to-hand security.
 AuditDeliveryLogs
 -----------------
 LogId (PK)
-DeliveryId
+DeliveryId (FK)
 ActionType
-ActorRole
-ActorId
-IPAddress
-DeviceInfo
-Timestamp
+UserId
+CreatedAt
 ```
 
 Purpose: Compliance trail.
