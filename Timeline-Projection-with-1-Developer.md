@@ -91,9 +91,12 @@ Core New Objects:
 DeliveryRecords
 ---------------
 DeliveryId (PK)
-CampaignId (FK)
+EcouponId (FK)
 WinnerId (FK)
+EcouponPrizeId (FK)
+EcouponDrawId (FK)
 DeliveryMode (Online/Shipment/HandToHand)
+OtpAttempts 
 CurrentStatus
 IsFinalized
 CreatedAt
@@ -138,7 +141,6 @@ DeliveryId (FK)
 OtpCode (Encrypted)
 ExpiryTime
 IsUsed
-Attempts
 GeneratedAt
 VerifiedAt
 ```
@@ -195,6 +197,10 @@ Purpose: Compliance trail.
 ```sql
 + PostDrawStatus
 + PostDrawCompletedAt
+```
+
+```sql
++ Add New Role - Ministry
 ```
 
 ⏱️ Effort: **0.5 Day**
