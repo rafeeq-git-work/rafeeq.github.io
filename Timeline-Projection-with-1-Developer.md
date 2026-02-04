@@ -160,7 +160,8 @@ QrHash
 IsActive
 ExpiresAt
 UsedAt
-DeviceId
+CorporateId
+
 ```
 
 Purpose: Hand-to-hand security.
